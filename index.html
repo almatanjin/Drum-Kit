@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRUM KIT</title>
+    <link rel="stylesheet" href="cs.css">
+</head>
+<body>
+    <div class="keys">
+        <div data-key="65" id="c"  class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div data-key="83" id="h" class="key">
+            <kbd>S</kbd>
+            <span class="sound">hihat</span>
+        </div>
+        <div data-key="68" id="k" class="key">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+        </div>
+        <div data-key="70" id="o" class="key">
+            <kbd>F</kbd>
+            <span class="sound">openhat</span>
+        </div>
+        <div data-key="71" id="b" class="key">
+            <kbd>G</kbd>
+            <span class="sound">boom</span>
+        </div>
+        <div data-key="72" id="r" class="key">
+            <kbd>H</kbd>
+            <span class="sound">ride</span>
+        </div>
+        <div data-key="74" id="s" class="key">
+            <kbd>J</kbd>
+            <span class="sound">snare</span>
+        </div>
+        <div data-key="76" id="t" class="key">
+            <kbd>L</kbd>
+            <span class="sound">tom</span>
+        </div>
+        <audio data-key="65" id="clap" src="sounds/01 - JavaScript Drum Kit_sounds_clap.wav"></audio>
+        <audio data-key="83" id="h" src="sounds/01 - JavaScript Drum Kit_sounds_hihat.wav"></audio>
+        <audio data-key="68" src="sounds/01 - JavaScript Drum Kit_sounds_kick.wav"></audio>
+        <audio data-key="70" src="sounds/01 - JavaScript Drum Kit_sounds_openhat.wav"></audio>
+        <audio data-key="71" src="sounds/01 - JavaScript Drum Kit_sounds_boom.wav"></audio>
+        <audio data-key="72" src="sounds/01 - JavaScript Drum Kit_sounds_ride.wav"></audio>
+        <audio data-key="74" src="sounds/01 - JavaScript Drum Kit_sounds_snare.wav"></audio>
+        <audio data-key="76" src="sounds/01 - JavaScript Drum Kit_sounds_tom.wav"></audio>
+
+    </div>
+    
+    <script>
+        //<img id="image" src="images/clap.gif" onclick="playclap()">
+
+    function playsound(e){
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const d = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        //console.log(audio);
+        audio.currentTime = 0;
+        audio.play();
+        console.log(d);
+        d.classList.add('playing')
+    };
+
+    function playclap(){
+        const audio = document.querySelector('#clap');
+        const d = document.querySelector('.key[data-key="65"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    function playh(){
+        const audio = document.querySelector('audio[data-key="83"]');
+        const d = document.querySelector('.key[data-key="83"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    function playk(){
+        const audio = document.querySelector('audio[data-key="68"]');
+        const d = document.querySelector('.key[data-key="68"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    function playo(){
+        const audio = document.querySelector('audio[data-key="70"]');
+        const d = document.querySelector('.key[data-key="70"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    function playb(){
+        const audio = document.querySelector('audio[data-key="71"]');
+        const d = document.querySelector('.key[data-key="71"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    function playr(){
+        const audio = document.querySelector('audio[data-key="72"]');
+        const d = document.querySelector('.key[data-key="72"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    function plays(){
+        const audio = document.querySelector('audio[data-key="74"]');
+        const d = document.querySelector('.key[data-key="74"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    function playt(){
+        const audio = document.querySelector('audio[data-key="76"]');
+        const d = document.querySelector('.key[data-key="76"]');
+        audio.play();
+        d.classList.add('playing')
+    }
+    
+
+
+     function removeT(e){
+        this.classList.remove('playing');
+     }
+
+     document.querySelector('#c').onclick = playclap;
+     document.querySelector('#h').onclick = playh;
+     document.querySelector('#k').onclick = playk;
+     document.querySelector('#o').onclick = playo;
+     document.querySelector('#b').onclick = playb;
+     document.querySelector('#r').onclick = playr;
+     document.querySelector('#s').onclick = plays;
+     document.querySelector('#t').onclick = playt;
+     
+     
+
+
+
+
+
+
+      const keys= document.querySelectorAll('.key');
+      keys.forEach(key => key.addEventListener('transitionend',removeT));
+      window.addEventListener('keydown',playsound);
+     
+
+    </script>
+
+</body>
+</html>
